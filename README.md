@@ -26,6 +26,17 @@ On X11 nothing changes. The Wayland backend is picked automatically in a Plasma
 Wayland session. See [Does Touchégg work on Wayland?](#does-touchégg-work-on-wayland)
 for details.
 
+Good to know on KDE Plasma:
+
+- KDE runs its own actions for touchpad swipes with 3 or more fingers (switch
+  desktop, Overview, Grid), and there is no setting to turn them off. If you use
+  the same gestures in Touchégg, both happen. The
+  [KWin touchpad gesture blocker](https://github.com/SamuelCGilbert/kwin-touchpad-gesture-blocker)
+  plugin stops KDE's gestures so only Touchégg's run.
+- [Touché](https://github.com/JoseExposito/touche), the settings app, warns that
+  Touchégg doesn't work on Wayland. On KDE Plasma with this fork you can ignore
+  that warning.
+
 Tested on KDE Plasma 6.8 (Wayland) on Ubuntu. It was written with help from an
 AI assistant (Claude). It's shared as-is, with no promise of support.
 
