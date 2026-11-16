@@ -30,7 +30,6 @@ namespace {
 constexpr auto KWIN_SERVICE = "org.kde.KWin";
 constexpr auto KWIN_SCRIPTING_PATH = "/Scripting";
 constexpr auto KWIN_SCRIPTING_INTERFACE = "org.kde.kwin.Scripting";
-constexpr auto KWIN_SCRIPT_INTERFACE = "org.kde.kwin.Script";
 
 constexpr auto BRIDGE_PATH = "/io/github/joseexposito/Touchegg/KWinBridge";
 constexpr auto BRIDGE_INTERFACE = "io.github.joseexposito.Touchegg.KWinBridge";
@@ -215,9 +214,15 @@ GVariant *KWinScriptBridge::run(const std::string &body) const {
     return nullptr;
   }
 
-  std::string scriptObjectPath = "/Scripting/Script" + std::to_string(scriptId);
-  bool started = this->callKWin(scriptObjectPath.c_str(), KWIN_SCRIPT_INTERFACE,
-                                "run", nullptr, nullptr, nullptr);
+  // Don't call "run" on /Scripting/Script<id>. KWin numbers a new script by
+  // the number of scripts loaded, so after another app unloads one of its
+  // scripts the new id can match a script that is still loaded and "run"
+  // reaches that one instead. Ours would never run and the gesture would wait
+  // for the timeout. "start" runs every loaded script that isn't running yet,
+  // which includes ours
+  bool started =
+      this->callKWin(KWIN_SCRIPTING_PATH, KWIN_SCRIPTING_INTERFACE, "start",
+                     nullptr, nullptr, nullptr);
 
   if (started) {
     // Wait for the script to call us back
