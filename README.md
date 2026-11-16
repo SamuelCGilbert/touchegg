@@ -1,3 +1,63 @@
+> [!NOTE]
+> **This is an unofficial fork of Touchégg that adds Wayland support.** The
+> Touchégg developers don't support it, so please don't send them reports about
+> it. The official project is
+> [JoseExposito/touchegg](https://github.com/JoseExposito/touchegg).
+
+# Touchégg for Wayland (unofficial)
+
+The official Touchégg only works on X11. This fork adds a backend for
+**KDE Plasma 6 on Wayland**, so gestures work in a Plasma Wayland session the
+same way they do on X11: window actions (maximize, minimize, close, tile,
+fullscreen), switching desktops, keyboard shortcuts, mouse clicks and the
+animations.
+
+Wayland doesn't let apps control other apps' windows, so each desktop needs its
+own backend. This one talks to KDE's window manager (KWin). **Other Wayland
+desktops (GNOME, Sway, Hyprland and so on) are not supported yet** and still
+only work with X11 apps, the same as the official Touchégg.
+
+| Change | Works on |
+|---|---|
+| Wayland backend: window actions, desktop switching, shortcuts, mouse clicks and animations | KDE Plasma 6 (Wayland) |
+| Fix: gesture actions no longer run more than once when two Touchégg clients start | Any desktop |
+
+On X11 nothing changes. The Wayland backend is picked automatically in a Plasma
+Wayland session. See [Does Touchégg work on Wayland?](#does-touchégg-work-on-wayland)
+for details.
+
+Tested on KDE Plasma 6.8 (Wayland) on Ubuntu. It was written with help from an
+AI assistant (Claude). It's shared as-is, with no promise of support.
+
+## Install
+
+Build and install from source. If you have Touchégg from your distribution,
+uninstall it first, because this replaces it.
+
+1. Install the build dependencies listed in [HACKING.md](HACKING.md#compilation).
+2. Build and install:
+
+   ```bash
+   git clone -b wayland https://github.com/SamuelCGilbert/touchegg.git
+   cd touchegg
+   cmake -S . -B build -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+   cmake --build build -j"$(nproc)"
+   sudo cmake --install build
+   sudo systemctl daemon-reload && sudo systemctl enable --now touchegg
+   ```
+
+3. Log out and back in, so the Touchégg client starts in your session.
+
+## Updates
+
+This fork is updated with new Touchégg releases from time to time. The changes
+are on the `wayland` branch; `master` is an unchanged copy of the official
+Touchégg.
+
+*The original Touchégg README follows.*
+
+---
+
 **Follow Touchégg on...** [![Twitter](.github/images/twitter.png "Twitter")](https://twitter.com/Jose__Exposito) <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=FT2KS37PVG8PU&currency_code=EUR&source=url"><img align="right"  src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"></a>
 
 
