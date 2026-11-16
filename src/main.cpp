@@ -107,9 +107,11 @@ int main(int argc, char** argv) {
     }
     const WindowSystem& windowSystem = *windowSystemPtr;
 
+    // Avoid running multiple client instances in parallel. The lock must be
+    // held while the client runs
+    std::unique_ptr<ClientLock> lock;
     try {
-      // Avoid running multiple client instances in parallel
-      ClientLock lock(windowSystem.getConnectionName());
+      lock = std::make_unique<ClientLock>(windowSystem.getConnectionName());
     } catch (const std::runtime_error& error) {
       tlg::error << error.what() << std::endl;
       return -1;
