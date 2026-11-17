@@ -220,9 +220,8 @@ GVariant *KWinScriptBridge::run(const std::string &body) const {
   // reaches that one instead. Ours would never run and the gesture would wait
   // for the timeout. "start" runs every loaded script that isn't running yet,
   // which includes ours
-  bool started =
-      this->callKWin(KWIN_SCRIPTING_PATH, KWIN_SCRIPTING_INTERFACE, "start",
-                     nullptr, nullptr, nullptr);
+  bool started = this->callKWin(KWIN_SCRIPTING_PATH, KWIN_SCRIPTING_INTERFACE,
+                                "start", nullptr, nullptr, nullptr);
 
   if (started) {
     // Wait for the script to call us back

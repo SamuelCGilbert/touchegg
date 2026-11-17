@@ -20,6 +20,7 @@
 
 #include <gio/gio.h>
 
+#include <cstdint>
 #include <memory>
 #include <string>
 
