@@ -1,3 +1,10 @@
+touchegg (1:2.0.18+wayland1) noble; urgency=medium
+
+  * Unofficial Wayland fork: KDE Plasma 6 (KWin) Wayland backend
+  * Keep the client lock while the client runs
+
+ -- Sam Gilbert <86975269+SamuelCGilbert@users.noreply.github.com>  Tue, 17 Nov 2026 10:00:00 -0500
+
 touchegg (2.0.18) focal; urgency=medium
 
   * Allow to execute actions on gesture begin and end

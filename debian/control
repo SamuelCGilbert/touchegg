@@ -1,7 +1,7 @@
 Source: touchegg
 Section: misc
 Priority: optional
-Maintainer: José Expósito <jose.exposito89@gmail.com>
+Maintainer: Sam Gilbert <86975269+SamuelCGilbert@users.noreply.github.com>
 Build-Depends: cmake,
                debhelper-compat (= 12),
                libc6-dev (>= 2.14),
@@ -19,9 +19,9 @@ Build-Depends: cmake,
                systemd-dev,
                wayland-protocols
 Standards-Version: 4.5.0
-Homepage: https://github.com/JoseExposito/touchegg
-Vcs-Browser: https://github.com/JoseExposito/touchegg
-Vcs-Git: https://github.com/JoseExposito/touchegg.git
+Homepage: https://github.com/SamuelCGilbert/touchegg
+Vcs-Browser: https://github.com/SamuelCGilbert/touchegg
+Vcs-Git: https://github.com/SamuelCGilbert/touchegg.git
 
 Package: touchegg
 Architecture: any

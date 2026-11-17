@@ -42,8 +42,33 @@ AI assistant (Claude). It's shared as-is, with no promise of support.
 
 ## Install
 
-Build and install from source. If you have Touchégg from your distribution,
-uninstall it first, because this replaces it.
+### Packages
+
+Download the package for your system from the
+[latest release](https://github.com/SamuelCGilbert/touchegg/releases/latest)
+and install it. It replaces Touchégg if you already have it.
+
+- **Ubuntu, KDE neon, Kubuntu and Debian 13** (`.deb`, built on Ubuntu 24.04):
+
+  ```bash
+  sudo apt install ./touchegg_*_amd64.deb
+  ```
+
+- **Fedora 43 or newer** (`.rpm`):
+
+  ```bash
+  sudo dnf install ./touchegg-*.x86_64.rpm
+  ```
+
+  When Fedora ships a newer Touchégg, a system update would replace this one.
+  To prevent that, add `excludepkgs=touchegg` to `/etc/dnf/dnf.conf`.
+
+Then log out and back in, so the Touchégg client starts in your session.
+
+### Build from source
+
+If you have Touchégg from your distribution, uninstall it first, because this
+replaces it.
 
 1. Install the build dependencies listed in [HACKING.md](HACKING.md#compilation).
 2. Build and install:

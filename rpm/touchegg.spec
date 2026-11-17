@@ -1,12 +1,12 @@
 Name:           touchegg
 Summary:        Multi-touch gesture recognizer
-Url:            https://github.com/JoseExposito/touchegg
-Version:        2.0.18
+Url:            https://github.com/SamuelCGilbert/touchegg
+Version:        2.0.18+wayland1
 Release:        1
 License:        GPLv3+
 Group:          Applications/Productivity
-Vendor:         José Expósito <jose.exposito89@gmail.com>
-Packager:       José Expósito <jose.exposito89@gmail.com>
+Vendor:         Sam Gilbert <86975269+SamuelCGilbert@users.noreply.github.com>
+Packager:       Sam Gilbert <86975269+SamuelCGilbert@users.noreply.github.com>
 
 BuildRequires: git gcc gcc-c++ cmake rpm-build
 BuildRequires: libudev-devel libinput-devel pugixml-devel cairo-devel
@@ -86,6 +86,10 @@ fi
 
 
 %changelog
+* Tue Nov 17 2026 Sam Gilbert <86975269+SamuelCGilbert@users.noreply.github.com> - 2.0.18+wayland1-1
+- Unofficial Wayland fork: KDE Plasma 6 (KWin) Wayland backend
+- Keep the client lock while the client runs
+
 * Sat May 24 2025 José Expósito <jose.exposito89@gmail.com> - 2.0.18-1
 - Allow to execute actions on gesture begin and end
 
